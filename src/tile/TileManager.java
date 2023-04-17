@@ -1,17 +1,16 @@
 package tile;
 
 import main.GamePanel;
-
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.*;
+
 
 public class TileManager {
 
     GamePanel gp;
     Tile[] tile;
-    int mapTileNum[][];
+    int[][] mapTileNum;
 
     public TileManager(GamePanel gp) {
         this.gp = gp;
@@ -28,13 +27,13 @@ public class TileManager {
         try {
 
             tile[0] = new Tile();
-            tile[0].image = ImageIO.read(new File("./res/grass.png"));
+            tile[0].image = ImageIO.read(new FileInputStream("res/tiles/grass.png"));
 
             tile[1] = new Tile();
-            tile[1].image = ImageIO.read(new File("./res/wall.png"));
+            tile[1].image = ImageIO.read(new FileInputStream("res/tiles/wall.png"));
 
             tile[2] = new Tile();
-            tile[2].image = ImageIO.read(new File("./res/water.png"));
+            tile[2].image = ImageIO.read(new FileInputStream("res/tiles/water.png"));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -44,7 +43,7 @@ public class TileManager {
     public void loadMap(){
 
         try{
-            InputStream is = getClass().getResourceAsStream("../maps/maps01.txt");
+            InputStream is = getClass().getResourceAsStream("/maps/map01.txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
             int col = 0;
@@ -55,7 +54,7 @@ public class TileManager {
                 String line = br.readLine();
 
                 while(col < gp.maxScreenCol){
-                    String numbers[] = line.split(" ");
+                    String[] numbers = line.split(" ");
 
                     int num = Integer.parseInt(numbers[col]);
 
