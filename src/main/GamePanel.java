@@ -6,7 +6,6 @@ import tile.TileManager;
 
 import javax.swing.JPanel;
 import java.awt.*;
-import java.sql.SQLOutput;
 
 public class GamePanel extends JPanel implements Runnable{
     // SCREEN SETTINGS
@@ -36,6 +35,8 @@ public class GamePanel extends JPanel implements Runnable{
     // COLLISION
     public CollisionChecker cChecker = new CollisionChecker(this);
     public AssetSetter aSetter = new AssetSetter(this);
+
+    // UI
     public UI ui = new UI(this);
 
 
@@ -43,6 +44,12 @@ public class GamePanel extends JPanel implements Runnable{
 
     public Player player = new Player(this, keyH);
     public SuperObject obj[] = new SuperObject[10];
+
+    // GAME STATE
+
+    public int gameState;
+    public final int playState = 1;
+    public final int pauseState = 2;
 
 
     public GamePanel() {
@@ -58,6 +65,8 @@ public class GamePanel extends JPanel implements Runnable{
         aSetter.setObject();
 
         playMusic(0);
+        stopMusic();
+        gameState = playState;
     }
 
     public void startGameThread() {
@@ -100,7 +109,12 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void update () {
 
-        player.update();
+        if(gameState == playState) {
+            player.update();
+        }
+        if(gameState == pauseState){
+            // nothing
+        }
     }
 
     public void paintComponent(Graphics g) {
