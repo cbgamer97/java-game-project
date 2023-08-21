@@ -29,7 +29,7 @@ public class GamePanel extends JPanel implements Runnable{
 
 //    SYSTEM
     TileManager tileM = new TileManager(this);
-    KeyHandler keyH = new KeyHandler();
+    KeyHandler keyH = new KeyHandler(this);
     Sound music = new Sound();
     Sound se = new Sound();
     Thread gameThread;
@@ -124,14 +124,6 @@ public class GamePanel extends JPanel implements Runnable{
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
-//        DEBUG
-
-        long drawStart = 0;
-        if(keyH.checkDrawTime == true){
-            drawStart = System.nanoTime();
-        }
-
-
         // TILE
         tileM.draw(g2);
 
@@ -149,15 +141,6 @@ public class GamePanel extends JPanel implements Runnable{
         //UI
 
         ui.draw(g2);
-
-//        DEBUG
-        if(keyH.checkDrawTime == true) {
-            long drawEnd = System.nanoTime();
-            long passed = drawEnd - drawStart;
-            g2.setColor(Color.white);
-            g2.drawString("Draw Time: " + passed, 10, 400);
-            System.out.println("Draw Time: " + passed);
-        }
 
 
         g2.dispose();
