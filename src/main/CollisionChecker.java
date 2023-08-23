@@ -60,6 +60,8 @@ public class CollisionChecker {
         }
     }
 
+//    OBJECT COLLISION CHECKER
+
     public int checkObject(Entity entity, boolean player){
 
         int index = 999;
@@ -188,6 +190,8 @@ public class CollisionChecker {
         }
         return index;
     }
+
+//    PLAYER COLLISTION CHECKER
 
     public void checkPlayer(Entity entity){
         entity.solidArea.x = entity.worldX + entity.solidArea.x;

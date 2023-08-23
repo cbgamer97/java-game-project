@@ -123,6 +123,8 @@ public class Player extends Entity{
         }
     }
 
+//    PLAYER INTERACTS WITH NPC
+
     public void interactNPC(int i){
         if(i != 999){
 
@@ -133,6 +135,8 @@ public class Player extends Entity{
         }
         gp.keyH.enterPressed = false;
     }
+
+//    GRAPHICS 2D DRAWING FOR PLAYER SPRITE
 
     public void draw(Graphics2D g2) {
 

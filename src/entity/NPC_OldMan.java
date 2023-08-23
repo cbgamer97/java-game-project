@@ -29,12 +29,17 @@ public class NPC_OldMan extends Entity {
 
     }
 
+//    NPC dialogue
+
     public void setDialogue(){
         dialogues[0] = "Hello, lad.";
         dialogues[1] = "So you've come to this island to \nfind the treasure?";
         dialogues[2] = "I used to be a great adventurer \nyou know... but now I'm too old.";
         dialogues[3] = "Good luck to ya lad.";
     }
+
+
+//    NPC movement logic
 
     public void setAction(){
 
