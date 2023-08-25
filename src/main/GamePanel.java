@@ -112,6 +112,8 @@ public class GamePanel extends JPanel implements Runnable{
         }
     }
 
+//    UPDATES AND PAINTS GAME OBJECTS AND ENTITIES DEPENDING ON GAME STATE (PLAY, PAUSE, DIALOGUE)
+
     public void update () {
 
         if(gameState == playState) {
